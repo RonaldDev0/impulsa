@@ -1,19 +1,23 @@
 import type { Metadata } from 'next'
-
-import './globals.css'
+import { Inter } from 'next/font/google'
+import { Providers } from './providers'
 
 import type { ReactNode } from 'react'
 
+const inter = Inter({ subsets: ['latin'] })
+
 export const metadata: Metadata = {
-  title: 'Impulsa',
-  description: 'The best fintech for startups'
+  title: 'Impulsa - Tu aliado financiero',
+  description: 'Descubre nuestros productos financieros diseñados para impulsar tu crecimiento económico.'
 }
 
-export default function RootLayout ({ children }: Readonly<{ children: ReactNode }>) {
+export default function RootLayout ({ children }: { children: ReactNode }) {
   return (
-    <html lang='en'>
-      <body className='antialiased'>
-        {children}
+    <html lang='es'>
+      <body className={inter.className}>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   )
