@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Impulsa – Catálogo de Productos Financieros
 
-## Getting Started
+Landing page desarrollada como solución a la prueba técnica Frontend Senior para una fintech. Esta aplicación muestra un catálogo de productos financieros con diseño moderno, accesibilidad, filtros y visualización detallada. Se desarrolló con enfoque profesional en experiencia de usuario, modularidad y escalabilidad.
 
-First, run the development server:
+## 🚀 Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+[🔗 Ver Deploy en Vercel](https://impulsa-gray.vercel.app/)
+
+## 🛠️ Tecnologías utilizadas
+
+- **Next.js (App Router)**
+- **TypeScript**
+- **TailwindCSS** para layout
+- **Styled Components** para componentes visuales reusables
+- **ESLint + Prettier** para mantener código limpio y consistente
+- **Generación de assets ilustrados personalizados con IA (estilo startup azul)**
+
+## 📂 Estructura del proyecto
+
+```
+/src
+├── app
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── providers.tsx
+│   ├── globals.css
+│   └── product
+│       └── page.tsx
+├── components
+│   ├── CategoryFilter.tsx
+│   └── ProductCard.tsx
+├── constants
+├── data
+├── hooks
+├── styles
+├── types
+│   └── product.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✅ Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Catálogo** con 12 productos mockeados (cuentas, créditos, seguros, inversiones).
+- **Filtros por categoría** mediante tabs horizontales.
+- **Página de detalle** con información completa y botón de regreso.
+- **Ilustraciones personalizadas** para cada producto.
+- **Diseño responsive y accesible (mobile-first).**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔍 Cómo correr localmente
 
-## Learn More
+```bash
+git clone https://github.com/RonaldDev0/impulsa.git
+cd impulsa
+pnpm install
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Despliegue
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Puedes desplegar fácilmente en [Vercel](https://vercel.com) conectando el repo.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 💡 Decisiones técnicas
 
-## Deploy on Vercel
+### 1. ¿Qué criterios seguiste para diseñar la UI de productos financieros?
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Me basé en patrones visuales de confianza y transparencia: mucho espacio en blanco, tipografía clara, colores sobrios (azul) y jerarquía visual de beneficios. Usé ilustraciones vectoriales personalizadas para transmitir cercanía y modernidad.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 2. ¿Cómo decidiste cuándo usar Tailwind y cuándo Styled Components?
+
+- **Tailwind**: para layout, espaciados, grid, breakpoints y utilidades globales.
+- **Styled Components**: para encapsular estilos específicos de componentes, como tarjetas y detalles, permitiendo reusabilidad y separación visual.
+
+### 3. ¿Qué harías para escalar este proyecto en una aplicación real de banca digital?
+
+- Integrar productos reales desde un API REST o GraphQL.
+- Internacionalización (i18n) y manejo de monedas/regiones.
+- Manejo de sesión, roles y autenticación.
+- Panel administrativo para crear/editar productos.
+- Testing automatizado (unit + e2e).
+
+### 4. ¿Qué herramientas usarías para mejorar el rendimiento y monitoreo en producción?
+
+- **Lighthouse + Web Vitals** para medir rendimiento.
+- **Sentry** para monitoreo de errores.
+- **Vercel Analytics** o **Datadog** para performance.
+- Optimización de imágenes vía WebP + lazy loading.
+
+## 🖼️ Ilustraciones
+
+Se generaron 12 imágenes personalizadas estilo flat startup, monocromáticas azul, alineadas al diseño. Fueron generadas con IA y convertidas a `.webp` para máxima optimización.
+
