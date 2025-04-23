@@ -203,13 +203,13 @@ export default function ProductPage () {
             {product.minAmount && (
               <DetailItem>
                 <DetailLabel>Monto mínimo</DetailLabel>
-                <DetailValue>${product.minAmount.toLocaleString()}</DetailValue>
+                <DetailValue>{product.minAmount.toLocaleString()}</DetailValue>
               </DetailItem>
             )}
             {product.maxAmount && (
               <DetailItem>
                 <DetailLabel>Monto máximo</DetailLabel>
-                <DetailValue>${product.maxAmount.toLocaleString()}</DetailValue>
+                <DetailValue>{product.maxAmount.toLocaleString()}</DetailValue>
               </DetailItem>
             )}
             {product.term && (

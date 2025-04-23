@@ -53,7 +53,7 @@ const Card = styled.div`
 const ImageContainer = styled.div`
   position: relative;
   width: 100%;
-  padding-top: 56.25%;
+  height: 180px;
   border-radius: ${theme.borderRadius.md};
   overflow: hidden;
   margin-bottom: ${theme.spacing.md};
@@ -61,7 +61,7 @@ const ImageContainer = styled.div`
 `
 
 const StyledImage = styled(Image)`
-  object-fit: cover;
+  object-fit: contain;
 `
 
 const Title = styled.h3`
@@ -131,6 +131,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
           priority={false}
           quality={85}
+          style={{ objectPosition: 'center' }}
         />
         {product.riskLevel && (
           <RiskLevel $level={product.riskLevel}>

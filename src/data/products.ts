@@ -1,4 +1,15 @@
-import { FinancialProduct } from '../types/product'
+import { FinancialProduct, ProductCategory, RiskLevel, MonetaryAmount } from '@/types/product'
+
+const mkAmount = (amount: number, currency: MonetaryAmount['currency'] = 'USD'): MonetaryAmount & { toString(): string } => {
+  const obj: MonetaryAmount & { toString(): string } = {
+    amount,
+    currency,
+    toString () {
+      return amount.toLocaleString(undefined, { style: 'currency', currency: currency })
+    }
+  }
+  return obj
+}
 
 export const products: FinancialProduct[] = [
   {
@@ -6,164 +17,188 @@ export const products: FinancialProduct[] = [
     name: 'Fondo de Inversión Plus',
     type: 'Fondo Mutuo',
     interestRate: 8.5,
-    category: 'inversiones',
-    riskLevel: 'medio',
+    category: ProductCategory.INVESTMENTS,
+    riskLevel: RiskLevel.MEDIUM,
     description: 'Fondo de inversión diversificado con rendimiento histórico superior al mercado',
-    minAmount: 1000,
-    maxAmount: 1000000,
+    minAmount: mkAmount(1000, 'USD'),
+    maxAmount: mkAmount(1000000, 'USD'),
     term: '12 meses',
     features: ['Diversificación automática', 'Liquidez diaria', 'Gestión profesional'],
-    imageUrl: '/images/investment-fund.jpg'
+    imageUrl: '/investment-fund.webp',
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     id: '2',
     name: 'Crédito Express',
     type: 'Préstamo Personal',
     interestRate: 12.9,
-    category: 'creditos',
-    riskLevel: 'bajo',
+    category: ProductCategory.CREDITS,
+    riskLevel: RiskLevel.LOW,
     description: 'Préstamo personal con aprobación en 24 horas',
-    minAmount: 5000,
-    maxAmount: 50000,
+    minAmount: mkAmount(5000, 'USD'),
+    maxAmount: mkAmount(50000, 'USD'),
     term: '24 meses',
     features: ['Aprobación rápida', 'Sin garantía', 'Tasas competitivas'],
-    imageUrl: '/images/express-loan.jpg'
+    imageUrl: '/express-loan.webp',
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     id: '3',
     name: 'Cuenta Premium',
     type: 'Cuenta de Ahorro',
     interestRate: 4.2,
-    category: 'ahorros',
-    riskLevel: 'bajo',
+    category: ProductCategory.SAVINGS,
+    riskLevel: RiskLevel.LOW,
     description: 'Cuenta de ahorro con beneficios premium',
-    minAmount: 0,
-    maxAmount: 1000000,
+    minAmount: mkAmount(0, 'USD'),
+    maxAmount: mkAmount(1000000, 'USD'),
     term: 'Indefinido',
     features: ['Sin comisiones', 'Tarjeta de débito', 'Seguro de robo'],
-    imageUrl: '/images/premium-account.jpg'
+    imageUrl: '/premium-account.webp',
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     id: '4',
     name: 'Seguro Vida Total',
     type: 'Seguro de Vida',
-    category: 'seguros',
-    riskLevel: 'bajo',
+    category: ProductCategory.INSURANCE,
+    riskLevel: RiskLevel.LOW,
     description: 'Protección integral para ti y tu familia',
-    minAmount: 50,
-    maxAmount: 500,
+    minAmount: mkAmount(50, 'USD'),
+    maxAmount: mkAmount(500, 'USD'),
     term: 'Anual',
     features: ['Cobertura amplia', 'Beneficios adicionales', 'Renovación automática'],
-    imageUrl: '/images/life-insurance.jpg'
+    imageUrl: '/life-insurance.webp',
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     id: '5',
     name: 'Fondo de Renta Fija',
     type: 'Fondo Mutuo',
     interestRate: 6.2,
-    category: 'inversiones',
-    riskLevel: 'bajo',
+    category: ProductCategory.INVESTMENTS,
+    riskLevel: RiskLevel.LOW,
     description: 'Inversión segura con rendimiento estable',
-    minAmount: 5000,
-    maxAmount: 500000,
+    minAmount: mkAmount(5000, 'USD'),
+    maxAmount: mkAmount(500000, 'USD'),
     term: '6 meses',
     features: ['Bajo riesgo', 'Rendimiento garantizado', 'Liquidez semanal'],
-    imageUrl: '/images/fixed-income.jpg'
+    imageUrl: '/fixed-income.webp',
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     id: '6',
     name: 'Crédito Hipotecario',
     type: 'Préstamo Hipotecario',
     interestRate: 7.8,
-    category: 'creditos',
-    riskLevel: 'medio',
+    category: ProductCategory.CREDITS,
+    riskLevel: RiskLevel.MEDIUM,
     description: 'Financiamiento para tu vivienda',
-    minAmount: 100000,
-    maxAmount: 2000000,
+    minAmount: mkAmount(100000, 'USD'),
+    maxAmount: mkAmount(2000000, 'USD'),
     term: '20 años',
     features: ['Tasa fija', 'Plazo flexible', 'Seguro incluido'],
-    imageUrl: '/images/mortgage.jpg'
+    imageUrl: '/mortgage.webp',
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     id: '7',
     name: 'Cuenta Joven',
     type: 'Cuenta de Ahorro',
     interestRate: 3.5,
-    category: 'ahorros',
-    riskLevel: 'bajo',
+    category: ProductCategory.SAVINGS,
+    riskLevel: RiskLevel.LOW,
     description: 'Cuenta diseñada para jóvenes emprendedores',
-    minAmount: 0,
-    maxAmount: 50000,
+    minAmount: mkAmount(0, 'USD'),
+    maxAmount: mkAmount(50000, 'USD'),
     term: 'Indefinido',
     features: ['Sin comisiones', 'App móvil', 'Beneficios exclusivos'],
-    imageUrl: '/images/youth-account.jpg'
+    imageUrl: '/youth-account.webp',
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     id: '8',
     name: 'Seguro Auto Plus',
     type: 'Seguro de Auto',
-    category: 'seguros',
-    riskLevel: 'bajo',
+    category: ProductCategory.INSURANCE,
+    riskLevel: RiskLevel.LOW,
     description: 'Cobertura completa para tu vehículo',
-    minAmount: 30,
-    maxAmount: 200,
+    minAmount: mkAmount(30, 'USD'),
+    maxAmount: mkAmount(200, 'USD'),
     term: 'Anual',
     features: ['Asistencia vial', 'Cobertura amplia', 'Talleres autorizados'],
-    imageUrl: '/images/car-insurance.jpg'
+    imageUrl: '/car-insurance.webp',
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     id: '9',
     name: 'Fondo de Acciones',
     type: 'Fondo Mutuo',
     interestRate: 12.5,
-    category: 'inversiones',
-    riskLevel: 'alto',
+    category: ProductCategory.INVESTMENTS,
+    riskLevel: RiskLevel.HIGH,
     description: 'Inversión en acciones de empresas líderes',
-    minAmount: 10000,
-    maxAmount: 1000000,
+    minAmount: mkAmount(10000, 'USD'),
+    maxAmount: mkAmount(1000000, 'USD'),
     term: '24 meses',
     features: ['Alto rendimiento', 'Diversificación', 'Gestión activa'],
-    imageUrl: '/images/stock-fund.jpg'
+    imageUrl: '/stock-fund.webp',
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     id: '10',
     name: 'Crédito Pyme',
     type: 'Préstamo Empresarial',
     interestRate: 9.5,
-    category: 'creditos',
-    riskLevel: 'medio',
+    category: ProductCategory.CREDITS,
+    riskLevel: RiskLevel.MEDIUM,
     description: 'Financiamiento para tu negocio',
-    minAmount: 10000,
-    maxAmount: 500000,
+    minAmount: mkAmount(10000, 'USD'),
+    maxAmount: mkAmount(500000, 'USD'),
     term: '60 meses',
     features: ['Tasas preferenciales', 'Plazo flexible', 'Asesoría empresarial'],
-    imageUrl: '/images/business-loan.jpg'
+    imageUrl: '/business-loan.webp',
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     id: '11',
     name: 'Cuenta Empresarial',
     type: 'Cuenta de Ahorro',
     interestRate: 2.8,
-    category: 'ahorros',
-    riskLevel: 'bajo',
+    category: ProductCategory.SAVINGS,
+    riskLevel: RiskLevel.LOW,
     description: 'Cuenta diseñada para empresas',
-    minAmount: 0,
-    maxAmount: 5000000,
+    minAmount: mkAmount(0, 'USD'),
+    maxAmount: mkAmount(5000000, 'USD'),
     term: 'Indefinido',
     features: ['Múltiples usuarios', 'Pagos masivos', 'Reportes personalizados'],
-    imageUrl: '/images/business-account.jpg'
+    imageUrl: '/business-account.webp',
+    createdAt: new Date(),
+    updatedAt: new Date()
   },
   {
     id: '12',
     name: 'Seguro Hogar',
     type: 'Seguro de Hogar',
-    category: 'seguros',
-    riskLevel: 'bajo',
+    category: ProductCategory.INSURANCE,
+    riskLevel: RiskLevel.LOW,
     description: 'Protección para tu hogar',
-    minAmount: 20,
-    maxAmount: 150,
+    minAmount: mkAmount(20, 'USD'),
+    maxAmount: mkAmount(150, 'USD'),
     term: 'Anual',
     features: ['Cobertura amplia', 'Asistencia domiciliaria', 'Robo y daños'],
-    imageUrl: '/images/home-insurance.jpg'
+    imageUrl: '/home-insurance.webp',
+    createdAt: new Date(),
+    updatedAt: new Date()
   }
 ]
